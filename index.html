@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Web Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1 id="main-title">Member Registration / सदस्य पंजीकरण</h1>
+            <p>Please fill in the details to join our community / कृपया जुड़ने के लिए विवरण भरें।</p>
+        </header>
+        <main>
+            <div id="success-container" class="card hidden">
+                <div class="success-icon">✓</div>
+                <h2>Thank You! / धन्यवाद!</h2>
+                <p>Your registration has been submitted successfully. / आपका पंजीकरण सफलतापूर्वक जमा हो गया है।</p>
+                <button onclick="location.reload()">Register Another Member / दूसरा सदस्य पंजीकृत करें</button>
+            </div>
+            <form id="registration-form" class="card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name / पूरा नाम</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter full name / पूरा नाम दर्ज करें">
+                    </div>
+                    <div class="form-group">
+                        <label for="fatherName">Father's Name / पिता का नाम</label>
+                        <input type="text" id="fatherName" name="fatherName" required placeholder="Enter father's name / पिता का नाम दर्ज करें">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth / जन्म तिथि</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category / श्रेणी</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select Category / श्रेणी चुनें</option>
+                            <option value="Samaj Member">Samaj Member / समाज सदस्य</option>
+                            <option value="Jeweller">Jeweller / जौहरी</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number / मोबाइल नंबर</label>
+                        <input type="tel" id="mobile" name="mobile" required placeholder="Enter mobile number / मोबाइल नंबर दर्ज करें">
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Number / व्हाट्सएप नंबर</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number / व्हाट्सएप नंबर दर्ज करें">
+                    </div>
+                    <div class="form-group">
+                        <label for="aadhaar">Aadhaar Number / आधार नंबर</label>
+                        <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter Aadhaar number / आधार नंबर दर्ज करें">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State / राज्य</label>
+                        <select id="state" name="state" required>
+                            <option value="" disabled selected>Select State / राज्य चुनें</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">District / जिला</label>
+                        <select id="district" name="district" required disabled>
+                            <option value="" disabled selected>Select District / जिला चुनें</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City / शहर</label>
+                        <select id="city" name="city" required disabled>
+                            <option value="" disabled selected>Select City / शहर चुनें</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode / पिन कोड</label>
+                        <input type="text" id="pincode" name="pincode" placeholder="Enter pincode / पिन कोड दर्ज करें">
+                    </div>
+                </div>
+                <button type="submit" id="submit-btn">Register Member / सदस्य पंजीकृत करें</button>
+            </form>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
