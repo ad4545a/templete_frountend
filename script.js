@@ -74,16 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.textContent = 'Submitting... / जमा किया जा रहा है...';
 
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
         
-        console.log('Sending Registration Data:', data);
+        console.log('Sending Registration Data (FormData)...');
 
         fetch(`${API_BASE_URL}/api/register`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            body: formData
         })
         .then(res => res.json())
         .then(response => {
