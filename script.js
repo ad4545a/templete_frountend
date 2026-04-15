@@ -7,6 +7,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const stateSelect = document.getElementById('state');
     const districtSelect = document.getElementById('district');
     const citySelect = document.getElementById('city');
+    const titleSelect = document.getElementById('title');
+    const fatherNameLabel = document.getElementById('fatherNameLabel');
+    const fatherNameInput = document.getElementById('fatherName');
+    const categorySelect = document.getElementById('category');
+    const professionGroup = document.getElementById('professionGroup');
+    const professionSelect = document.getElementById('profession');
+    const firmNameGroup = document.getElementById('firmNameGroup');
+
+    // Title change → swap Father Name / Husband Name label
+    titleSelect.addEventListener('change', () => {
+        if (titleSelect.value === 'Mrs') {
+            fatherNameLabel.textContent = "Husband's Name / पति का नाम";
+            fatherNameInput.placeholder = "Enter husband's name / पति का नाम दर्ज करें";
+        } else {
+            fatherNameLabel.textContent = "Father's Name / पिता का नाम";
+            fatherNameInput.placeholder = "Enter father's name / पिता का नाम दर्ज करें";
+        }
+    });
+
+    // Category change → show/hide Profession & Firm Name
+    categorySelect.addEventListener('change', () => {
+        const category = categorySelect.value;
+        if (category === 'Samaj Member') {
+            professionGroup.classList.remove('hidden');
+            // Check if Jeweller is selected in profession
+            checkProfessionForFirmName();
+        } else if (category === 'Jeweller') {
+            professionGroup.classList.add('hidden');
+            firmNameGroup.classList.remove('hidden');
+        } else {
+            professionGroup.classList.add('hidden');
+            firmNameGroup.classList.add('hidden');
+        }
+    });
+
+    // Profession change → if Jeweller, show Firm Name
+    professionSelect.addEventListener('change', () => {
+        checkProfessionForFirmName();
+    });
+
+    function checkProfessionForFirmName() {
+        const profession = professionSelect.value || '';
+        if (profession.toLowerCase().includes('jeweller') || profession.includes('ज्वेलर')) {
+            firmNameGroup.classList.remove('hidden');
+        } else {
+            firmNameGroup.classList.add('hidden');
+        }
+    }
 
     // Fetch states on load
     fetch(`${API_BASE_URL}/api/states`)

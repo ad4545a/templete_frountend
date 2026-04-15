@@ -25,12 +25,19 @@
             </div>
             <form id="registration-form" class="card">
                 <div class="form-grid">
-                    <div class="form-group">
+                    <div class="form-group name-row">
                         <label for="name">Full Name / पूरा नाम</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter full name / पूरा नाम दर्ज करें">
+                        <div class="name-input-row">
+                            <select id="title" name="title" required class="title-select">
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Mrs">Mrs</option>
+                            </select>
+                            <input type="text" id="name" name="name" required placeholder="Enter full name / पूरा नाम दर्ज करें">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="fatherName">Father's Name / पिता का नाम</label>
+                        <label for="fatherName" id="fatherNameLabel">Father's Name / पिता का नाम</label>
                         <input type="text" id="fatherName" name="fatherName" required placeholder="Enter father's name / पिता का नाम दर्ज करें">
                     </div>
                     <div class="form-group">
@@ -44,6 +51,24 @@
                             <option value="Samaj Member">Samaj Member / समाज सदस्य</option>
                             <option value="Jeweller">Jeweller / जौहरी</option>
                         </select>
+                    </div>
+                    <!-- Profession (shown when Samaj Member is selected) -->
+                    <div class="form-group hidden" id="professionGroup">
+                        <label for="profession">Profession / व्यवसाय</label>
+                        <select id="profession" name="profession">
+                            <option value="" disabled selected>Select Profession / व्यवसाय चुनें</option>
+                            <option value="व्यापारी (Businessman)">Businessman / व्यापारी</option>
+                            <option value="ज्वेलर (Jeweller)">Jeweller / ज्वेलर</option>
+                            <option value="डॉक्टर (Doctor)">Doctor / डॉक्टर</option>
+                            <option value="इंजीनियर (Engineer)">Engineer / इंजीनियर</option>
+                            <option value="शिक्षक (Teacher)">Teacher / शिक्षक</option>
+                            <option value="अन्य (Other)">Other / अन्य</option>
+                        </select>
+                    </div>
+                    <!-- Firm Name (shown when Jeweller is selected in category or profession) -->
+                    <div class="form-group hidden" id="firmNameGroup">
+                        <label for="firmName">Firm Name / फर्म का नाम</label>
+                        <input type="text" id="firmName" name="firmName" placeholder="Enter firm name / फर्म का नाम दर्ज करें">
                     </div>
                     <div class="form-group">
                         <label for="mobile">Mobile Number / मोबाइल नंबर</label>
@@ -78,6 +103,11 @@
                         <select id="city" name="city" required disabled>
                             <option value="" disabled selected>Select City / शहर चुनें</option>
                         </select>
+                    </div>
+                    <!-- Address (below City) -->
+                    <div class="form-group full-width">
+                        <label for="address">Address / पता</label>
+                        <textarea id="address" name="address" rows="2" placeholder="Enter full address / पूरा पता लिखें"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="pincode">Pincode / पिन कोड</label>
