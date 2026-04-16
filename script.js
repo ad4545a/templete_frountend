@@ -1,6 +1,7 @@
-// TODO: Replace this with your actual Render backend URL after deploying to Render.
-// Example: const API_BASE_URL = 'https://your-render-app.onrender.com';
-const API_BASE_URL = 'https://templete-backend.onrender.com';
+// Use localhost for local development, Render URL for production
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:3000' 
+    : 'https://templete-backend.onrender.com';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registration-form');
