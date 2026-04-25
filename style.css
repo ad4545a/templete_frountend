@@ -260,21 +260,25 @@ input, select, textarea {
     display: flex;
     width: 100%;
     position: relative;
+    --select-width: 115px;
 }
 
 .title-select {
-    width: 95px !important;
+    width: var(--select-width) !important;
     padding-left: 3.25rem !important;
+    padding-right: 0.5rem !important;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
-    background: #f3f4f6;
+    background: #f9fafb !important;
     z-index: 2;
+    cursor: pointer;
 }
 
 .name-split input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    padding-left: 1.25rem !important;
 }
 
 /* Floating Label Logic */
@@ -294,7 +298,12 @@ input, select, textarea {
 }
 
 .name-split label {
-    left: 105px;
+    left: calc(var(--select-width) + 1.25rem);
+}
+
+.name-split input:focus ~ label,
+.name-split input:not(:placeholder-shown) ~ label {
+    left: calc(var(--select-width) + 0.75rem) !important;
 }
 
 input:focus ~ label,
