@@ -1,123 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Web Experience</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Member Registration | सदस्य पंजीकरण</title>
+    <!-- Modern Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div class="bg-decoration"></div>
+
     <div class="container">
         <header>
-            <img src="logo.png" alt="Logo" class="logo">
-            <h1 id="main-title">Member Registration / सदस्य पंजीकरण</h1>
-            <p>Please fill in the details to join our community / कृपया जुड़ने के लिए विवरण भरें।</p>
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Logo" class="logo">
+            </div>
+            <h1>Member Registration / सदस्य पंजीकरण</h1>
+            <p>Join our community in 2 minutes / मात्र 2 मिनट में हमारे समुदाय में शामिल हों</p>
         </header>
+
+        <div class="progress-wrapper">
+            <div class="progress-bar" id="progress-bar" style="width: 25%;"></div>
+            <div class="steps-indicator">
+                <div class="step active" data-step="1">
+                    <div class="step-icon"><i class="fas fa-user-tag"></i></div>
+                    <span>Info</span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-icon"><i class="fas fa-phone"></i></div>
+                    <span>Contact</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-icon"><i class="fas fa-location-dot"></i></div>
+                    <span>Address</span>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-icon"><i class="fas fa-shield-halved"></i></div>
+                    <span>Verify</span>
+                </div>
+            </div>
+        </div>
+
         <main>
+            <!-- Success Message -->
             <div id="success-container" class="card hidden">
-                <div class="success-icon">✓</div>
+                <div class="success-animation">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
                 <h2>Thank You! / धन्यवाद!</h2>
                 <p>Your registration has been submitted successfully. / आपका पंजीकरण सफलतापूर्वक जमा हो गया है।</p>
-                <button onclick="location.reload()">Register Another Member / दूसरा सदस्य पंजीकृत करें</button>
+                <button type="button" class="btn-primary" onclick="location.reload()">Register Another Member / दूसरा
+                    सदस्य पंजीकृत करें</button>
             </div>
-            <form id="registration-form" class="card">
-                <div class="form-grid">
-                    <div class="form-group name-row">
-                        <label for="name">Full Name / पूरा नाम</label>
-                        <div class="name-input-row">
-                            <select id="title" name="title" required class="title-select">
-                                <option value="Mr">Mr</option>
-                                <option value="Ms">Ms</option>
-                                <option value="Mrs">Mrs</option>
-                            </select>
-                            <input type="text" id="name" name="name" required placeholder="Enter full name / पूरा नाम दर्ज करें">
+
+            <!-- Registration Form -->
+            <form id="registration-form" class="card" enctype="multipart/form-data">
+
+                <!-- Step 1: Personal Info -->
+                <section id="step-1" class="form-step">
+                    <div class="section-header">
+                        <i class="fas fa-user"></i>
+                        <h3>Personal Information / व्यक्तिगत विवरण</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group floating-group full-width">
+                            <div class="input-with-icon">
+                                <i class="fas fa-user-pen"></i>
+                                <div class="name-split">
+                                    <select id="title" name="title" required class="title-select">
+                                        <option value="Mr">श्री</option>
+                                        <option value="Ms">श्रीमती</option>
+                                        <option value="Mrs">कुमारी</option>
+                                    </select>
+                                    <input type="text" id="name" name="name" required placeholder=" ">
+                                    <label for="name">Full Name / पूरा नाम</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-users"></i>
+                                <input type="text" id="fatherName" name="fatherName" required placeholder=" ">
+                                <label for="fatherName" id="fatherNameLabel">Father's Name / पिता का नाम</label>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                                <input type="date" id="dob" name="dob" required placeholder=" ">
+                                <label for="dob">Date of Birth / जन्म तिथि</label>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-briefcase"></i>
+                                <select id="category" name="category" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="Samaj Member">Samaj Member / समाज सदस्य</option>
+                                    <option value="Jeweller">Jeweller Member / स्वर्णकार सदस्य</option>
+                                </select>
+                                <label for="category">Category / श्रेणी</label>
+                            </div>
+                        </div>
+
+                        <!-- Conditional: Profession -->
+                        <div class="form-group floating-group hidden" id="professionGroup">
+                            <div class="input-with-icon">
+                                <i class="fas fa-user-doctor"></i>
+                                <select id="profession" name="profession">
+                                    <option value="" disabled selected></option>
+                                    <option value="व्यापारी (Businessman)"> Businessman / व्यापारी</option>
+                                    <option value="प्राइवेट नौकरी (Private Job)"> Private Job / प्राइवेट नौकरी</option>
+                                    <option value="सरकारी नौकरी (Government Job)"> Government Job / सरकारी नौकरी
+                                    </option>
+                                    <option value="अन्य (Other)"> Other / अन्य</option>
+                                </select>
+                                <label for="profession">Profession / व्यवसाय</label>
+                            </div>
+                        </div>
+
+                        <!-- Conditional: Firm Name -->
+                        <div class="form-group floating-group hidden" id="firmNameGroup">
+                            <div class="input-with-icon">
+                                <i class="fas fa-building"></i>
+                                <input type="text" id="firmName" name="firmName" placeholder=" ">
+                                <label for="firmName">Firm Name / फर्म का नाम</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group floating-group hidden" id="privateJobGroup">
+                            <div class="input-with-icon">
+                                <i class="fas fa-building"></i>
+                                <input type="text" id="PrivateJobDesignation" name="PrivateJobDesignation"
+                                    placeholder=" ">
+                                <label for="PrivateJobDesignation">Private Job Designation / प्राइवेट नौकरी का
+                                    पद</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group floating-group hidden" id="govtGroup">
+                            <div class="input-with-icon">
+                                <i class="fas fa-building"></i>
+                                <input type="text" id="Govt" name="Govt" placeholder=" ">
+                                <label for="Govt">Govt / सरकारी</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group floating-group hidden" id="otherJobGroup">
+                            <div class="input-with-icon">
+                                <i class="fas fa-briefcase"></i>
+                                <input type="text" id="otherProfession" name="OtherProfession" placeholder=" ">
+                                <label for="otherProfession">Other Job Name / अन्य कार्य का नाम</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="fatherName" id="fatherNameLabel">Father's Name / पिता का नाम</label>
-                        <input type="text" id="fatherName" name="fatherName" required placeholder="Enter father's name / पिता का नाम दर्ज करें">
+                </section>
+
+                <!-- Step 2: Contact Details -->
+                <section id="step-2" class="form-step hidden">
+                    <div class="section-header">
+                        <i class="fas fa-phone-volume"></i>
+                        <h3>Contact Details / संपर्क विवरण</h3>
                     </div>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth / जन्म तिथि</label>
-                        <input type="date" id="dob" name="dob" required>
+                    <div class="form-grid">
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-mobile-screen"></i>
+                                <input type="tel" id="mobile" name="mobile" required placeholder=" "
+                                    pattern="[0-9]{10}">
+                                <label for="mobile">Mobile Number / मोबाइल नंबर</label>
+                            </div>
+                            <small class="validation-hint">10-digit mobile number</small>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fab fa-whatsapp"></i>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder=" " pattern="[0-9]{10}">
+                                <label for="whatsapp">WhatsApp Number / व्हाट्सएप नंबर</label>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="whatsapp-same">
+                                <span class="slider"></span>
+                                <span class="toggle-label">WhatsApp is same as mobile / व्हाट्सएप मोबाइल के समान
+                                    है</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="category">Category / श्रेणी</label>
-                        <select id="category" name="category" required>
-                            <option value="" disabled selected>Select Category / श्रेणी चुनें</option>
-                            <option value="Samaj Member">Samaj Member / समाज सदस्य</option>
-                            <option value="Jeweller">Jeweller / जौहरी</option>
-                        </select>
+                    <div class="trust-note">
+                        <i class="fas fa-lock"></i>
+                        <span>Your data is सुरक्षित & encrypted</span>
                     </div>
-                    <!-- Profession (shown when Samaj Member is selected) -->
-                    <div class="form-group hidden" id="professionGroup">
-                        <label for="profession">Profession / व्यवसाय</label>
-                        <select id="profession" name="profession">
-                            <option value="" disabled selected>Select Profession / व्यवसाय चुनें</option>
-                            <option value="व्यापारी (Businessman)">Businessman / व्यापारी</option>
-                            <option value="ज्वेलर (Jeweller)">Jeweller / ज्वेलर</option>
-                            <option value="डॉक्टर (Doctor)">Doctor / डॉक्टर</option>
-                            <option value="इंजीनियर (Engineer)">Engineer / इंजीनियर</option>
-                            <option value="शिक्षक (Teacher)">Teacher / शिक्षक</option>
-                            <option value="अन्य (Other)">Other / अन्य</option>
-                        </select>
+                </section>
+
+                <!-- Step 3: Address -->
+                <section id="step-3" class="form-step hidden">
+                    <div class="section-header">
+                        <i class="fas fa-map-location-dot"></i>
+                        <h3>Address Information / पते की जानकारी</h3>
                     </div>
-                    <!-- Firm Name (shown when Jeweller is selected in category or profession) -->
-                    <div class="form-group hidden" id="firmNameGroup">
-                        <label for="firmName">Firm Name / फर्म का नाम</label>
-                        <input type="text" id="firmName" name="firmName" placeholder="Enter firm name / फर्म का नाम दर्ज करें">
+                    <div class="form-grid">
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-hashtag"></i>
+                                <input type="text" id="pincode" name="pincode" placeholder=" " maxlength="6">
+                                <label for="pincode">Pincode / पिन कोड</label>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-map"></i>
+                                <select id="state" name="state" required>
+                                    <option value="" disabled selected></option>
+                                </select>
+                                <label for="state">State / राज्य</label>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-city"></i>
+                                <select id="district" name="district" required disabled>
+                                    <option value="" disabled selected></option>
+                                </select>
+                                <label for="district">District / जिला</label>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-house-chimney"></i>
+                                <select id="city" name="city" required disabled>
+                                    <option value="" disabled selected></option>
+                                </select>
+                                <label for="city">City / शहर</label>
+                            </div>
+                        </div>
+                        <div class="form-group floating-group full-width">
+                            <div class="input-with-icon">
+                                <i class="fas fa-map-pin"></i>
+                                <textarea id="address" name="address" rows="2" placeholder=" "></textarea>
+                                <label for="address">Full Address / पूरा पता</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="mobile">Mobile Number / मोबाइल नंबर</label>
-                        <input type="tel" id="mobile" name="mobile" required placeholder="Enter mobile number / मोबाइल नंबर दर्ज करें">
+                </section>
+
+                <!-- Step 4: Verification -->
+                <section id="step-4" class="form-step hidden">
+                    <div class="section-header">
+                        <i class="fas fa-id-card"></i>
+                        <h3>Identity Verification / पहचान सत्यापन</h3>
                     </div>
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp Number / व्हाट्सएप नंबर</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number / व्हाट्सएप नंबर दर्ज करें">
+                    <div class="form-grid">
+                        <div class="form-group floating-group full-width">
+                            <div class="input-with-icon">
+                                <i class="fas fa-fingerprint"></i>
+                                <input type="text" id="aadhaar" name="aadhaar" placeholder=" " pattern="[0-9]{12}">
+                                <label for="aadhaar">Aadhaar Number / आधार नंबर</label>
+                            </div>
+                            <small class="validation-hint">12-digit Aadhaar number</small>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="upload-area" id="drop-zone">
+                                <input type="file" id="profilePic" name="profilePic" accept="image/*" hidden>
+                                <div class="upload-content">
+                                    <div class="upload-icon-circle">
+                                        <i class="fas fa-cloud-arrow-up"></i>
+                                    </div>
+                                    <p class="upload-text"><strong>Click to upload</strong> or drag and drop</p>
+                                    <p class="upload-subtext">Profile Photo (JPG, PNG, GIF up to 5MB)</p>
+                                    <div id="file-preview" class="file-preview hidden">
+                                        <img src="" alt="Preview">
+                                        <span id="file-name"></span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="aadhaar">Aadhaar Number / आधार नंबर</label>
-                        <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter Aadhaar number / आधार नंबर दर्ज करें">
-                    </div>
-                    <div class="form-group">
-                        <label for="profilePic">Profile Picture / प्रोफ़ाइल चित्र</label>
-                        <input type="file" id="profilePic" name="profilePic" accept="image/*">
-                    </div>
-                    <div class="form-group">
-                        <label for="state">State / राज्य</label>
-                        <select id="state" name="state" required>
-                            <option value="" disabled selected>Select State / राज्य चुनें</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="district">District / जिला</label>
-                        <select id="district" name="district" required disabled>
-                            <option value="" disabled selected>Select District / जिला चुनें</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City / शहर</label>
-                        <select id="city" name="city" required disabled>
-                            <option value="" disabled selected>Select City / शहर चुनें</option>
-                        </select>
-                    </div>
-                    <!-- Address (below City) -->
-                    <div class="form-group full-width">
-                        <label for="address">Address / पता</label>
-                        <textarea id="address" name="address" rows="2" placeholder="Enter full address / पूरा पता लिखें"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="pincode">Pincode / पिन कोड</label>
-                        <input type="text" id="pincode" name="pincode" placeholder="Enter pincode / पिन कोड दर्ज करें">
-                    </div>
+                </section>
+
+                <!-- Navigation Controls -->
+                <div class="form-controls">
+                    <button type="button" id="prev-btn" class="btn-secondary hidden"><i class="fas fa-arrow-left"></i>
+                        Back</button>
+                    <button type="button" id="next-btn" class="btn-primary">Continue <i
+                            class="fas fa-arrow-right"></i></button>
+                    <button type="submit" id="submit-btn" class="btn-primary hidden">Complete Registration <i
+                            class="fas fa-check-circle"></i></button>
                 </div>
-                <button type="submit" id="submit-btn">Register Member / सदस्य पंजीकृत करें</button>
+
             </form>
         </main>
+
+        <footer>
+            <p>&copy; 2026 Admin Panel. Your data is 100% secured.</p>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
