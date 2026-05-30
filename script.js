@@ -1,3 +1,4 @@
+// Clean restored version
 // API Configuration
 const API_BASE_URL = (['localhost', '127.0.0.1', ''].includes(window.location.hostname) || window.location.hostname.startsWith('192.168.'))
     ? 'http://localhost:3000'
