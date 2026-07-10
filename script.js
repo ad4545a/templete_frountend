@@ -336,19 +336,28 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-            .then(res => res.json())
+            .then(async res => {
+                const isJson = res.headers.get('content-type')?.includes('application/json');
+                const data = isJson ? await res.json() : null;
+
+                if (!res.ok) {
+                    const errorMsg = (data && data.error) || 'Registration failed';
+                    throw new Error(errorMsg);
+                }
+                return data;
+            })
             .then(response => {
-                if (response.success) {
+                if (response && response.success) {
                     form.classList.add('hidden');
                     document.getElementById('success-container').classList.remove('hidden');
                     updateStepUIUIForSuccess();
                 } else {
-                    throw new Error(response.error || 'Registration failed');
+                    throw new Error((response && response.error) || 'Registration failed');
                 }
             })
             .catch(err => {
                 console.error('Registration Error:', err);
-                alert(`Error: ${err.message}\nकृपया बाद में प्रयास करें।`);
+                alert(`त्रुटि (Error): ${err.message}`);
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Complete Registration <i class="fas fa-check-circle"></i>';
             });
