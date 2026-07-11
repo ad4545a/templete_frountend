@@ -322,10 +322,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Prevent Enter key from submitting the form prematurely
+    form.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            if (currentStep < totalSteps) {
+                nextBtn.click();
+            } else {
+                submitBtn.click();
+            }
+        }
+    });
+
     // --- Final Submission ---
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        if (!validateStep(currentStep)) {
+            console.log("Validation failed for step " + currentStep);
+            return;
+        }
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
